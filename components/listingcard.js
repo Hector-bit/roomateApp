@@ -7,8 +7,10 @@ function ListingCard(props){
     return(
         <div className='listingcard'>
             <h3>{props.title}</h3>
-            <img src={props.image}/>
+            <img src={props.image} alt='room image'/>
             <p>{props.description}</p>
         </div>
     )
 }
+
+export default ListingCard;
