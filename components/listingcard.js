@@ -5,11 +5,13 @@ import React from 'react';
 function ListingCard(props){
     console.log('listing card', props);
     return(
-        <div className='listingcard'>
-            <h3>{props.title}</h3>
+        
+        <Text>
+            <Text>{props.title}</Text>
             <img src={props.image} alt='room image'/>
-            <p>{props.description}</p>
-        </div>
+            <Text>{props.description}</Text>            
+        </Text>
+
     )
 }
 
