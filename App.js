@@ -1,23 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { NativeRouter, Route, Link } from 'react-router-native';
+import { NativeRouter, Routes, Route, Link } from 'react-router-native';
 import { StyleSheet, Text, View } from 'react-native';
 import DashboardPage from './components/dashboardpage';
-import ListingCard from './components/listingcard';
+import ListingsPage from './components/listingspage';
+import ProfilePage from './components/profilepage';
 
 export default function App() {
+
+  const Dash = () => <Text>rtyu</Text>;
+  const Testing = ListingsPage();
+
   return (
     <NativeRouter>
       <View style={styles.container}>
-        <Route exact path='/'/>
-        <Route exact path='/listings' component={listingsPage}/>
-        <Route exact path='/profile'/>
-      </View>
-      <View style={styles.nav}>
+
+        
+        <Routes>
+          <Route path='/' element={DashboardPage}/>
+          <Route path='listings' element={ListingsPage()}/>
+          <Route path='profile' element={<Text>asdfasdfasdf</Text>}/>          
+        </Routes>
+      
+        <View style={styles.nav}>
           <Link to='/'><Text>DASHBOARD</Text></Link>
           <Link to='/listings'><Text>LISTINGS</Text></Link>
           <Link to='/profile'><Text>PROFILE</Text></Link>
         </View>
+      </View>
     </NativeRouter>
 
   );
@@ -31,8 +41,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   nav: {
-    flex: 1,
-    flexDirection: 'row',
     backgroundColor: 'red',
   }
 });
