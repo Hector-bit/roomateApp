@@ -8,24 +8,22 @@ import ProfilePage from './components/profilepage';
 
 export default function App() {
 
-  const Dash = () => <Text>rtyu</Text>;
-  const Testing = ListingsPage();
-
   return (
     <NativeRouter>
       <View style={styles.container}>
-
-        
+        <View style={styles.main}>
         <Routes>
-          <Route path='/' element={DashboardPage}/>
+          <Route path='/' element={DashboardPage()}/>
           <Route path='listings' element={ListingsPage()}/>
-          <Route path='profile' element={<Text>asdfasdfasdf</Text>}/>          
-        </Routes>
+          <Route path='profile' element={ProfilePage()}/>          
+        </Routes>          
+        </View>
+
       
         <View style={styles.nav}>
-          <Link to='/'><Text>DASHBOARD</Text></Link>
-          <Link to='/listings'><Text>LISTINGS</Text></Link>
-          <Link to='/profile'><Text>PROFILE</Text></Link>
+          <Link style={styles.navButtons} to='/'><Text>DASHBOARD</Text></Link>
+          <Link style={styles.navButtons} to='/listings'><Text>LISTINGS</Text></Link>
+          <Link style={styles.navButtons} to='/profile'><Text>PROFILE</Text></Link>
         </View>
       </View>
     </NativeRouter>
@@ -37,10 +35,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  main: {
+    flex: 9,
+    padding: 20
   },
   nav: {
-    backgroundColor: 'red',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignContent: 'center',
+    borderWidth: 3,
+    borderColor: '#20232a',
+    backgroundColor: '#fff',
+  },
+  navButtons: {
+    padding: 10
   }
 });

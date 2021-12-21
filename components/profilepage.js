@@ -3,7 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 
 function ProfilePage(){
     return (
-        <Text>this is the motherflipping profile page</Text>
+        <Text>
+            <Text>maybe we don't need a profile page</Text>
+        </Text>
     )
 }
 

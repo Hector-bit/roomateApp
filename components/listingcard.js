@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 //how do you get images without having to have them all in the app???
 
@@ -6,13 +7,28 @@ function ListingCard(props){
     console.log('listing card', props);
     return(
         
-        <Text>
-            <Text>{props.title}</Text>
-            <img src={props.image} alt='room image'/>
-            <Text>{props.description}</Text>            
-        </Text>
+        <View style={styles.listingCard}>
+            <Text>{props.props.title}</Text>
+            {/* <Image style={styles.listingCardImage} source={props.props.image}/> */}
+            <Text>{props.props.description}</Text>            
+        </View>
 
     )
 }
+
+const styles = StyleSheet.create({
+    listingCard: {
+        flex: 1,
+        flexDirection: 'column',
+        borderWidth: 4,
+        borderColor: 'green',
+    },
+    listingCardImage: {
+        borderWidth: 4,
+        borderColor: 'red',
+        width: 70,
+        height: 50,
+    }
+})
 
 export default ListingCard;
