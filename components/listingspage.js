@@ -26,14 +26,12 @@ function ListingsPage(){
         <View style={styles.listingsPage}>
             <Text>this is the listings page</Text>
             <Text>the following are the available listings</Text>
-            <View>
-                {tempArray.forEach(element => {
-                    return(
-                        <ListingCard props={element}/>
-                    )
-                })
-                }                
-            </View>
+            {tempArray.map(element => {
+                return(
+                    <ListingCard key={element.id} props={element}/>
+                )
+            })
+            }                
         </View>        
     )
 

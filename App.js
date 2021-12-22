@@ -25,8 +25,9 @@ export default function App() {
           <Link style={styles.navButtons} to='/listings'><Text>LISTINGS</Text></Link>
           <Link style={styles.navButtons} to='/profile'><Text>PROFILE</Text></Link>
         </View>
-      </View>
+      </View>      
     </NativeRouter>
+
 
   );
 }
