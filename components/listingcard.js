@@ -9,12 +9,7 @@ function ListingCard(props){
     return(
         <View style={styles.listingCard}>
             <Text>{props.props.title}</Text>
-            <Link to={`${props.props.id}`}>
                 <Image style={styles.listingCardImage} source={props.props.image}/>
-            </Link>
-            <Routes>
-                <Route path='listings/:id' element={RoomInfo( props.props )}/>
-            </Routes>           
             <Text>{props.props.description}</Text>   
         </View>
 

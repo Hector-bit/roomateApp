@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { NativeRouter, Routes, Route, Link } from 'react-router-native';
+import { NativeRouter, Routes, Route, Link, useParams } from 'react-router-native';
 import { StyleSheet, Text, View } from 'react-native';
 import DashboardPage from './components/dashboardpage';
 import ListingsPage from './components/listingspage';
 import ProfilePage from './components/profilepage';
+import RoomInfo from './components/roomInfo';
 
 export default function App() {
 
@@ -12,18 +13,22 @@ export default function App() {
     <NativeRouter>
       <View style={styles.container}>
         <View style={styles.main}>
-        <Routes>
-          <Route path='/' element={DashboardPage()}/>
-          <Route path='listings' element={ListingsPage()}/>
-          <Route path='profile' element={ProfilePage()}/>          
-        </Routes>          
+          <Routes>
+            <Route path='/' element={<DashboardPage/>}/>
+            <Route path='profile' element={<ProfilePage/>}/>          
+            <Route path="listings" element={<ListingsPage/>}/>
+            <Route path="listings/:roomid" element={<RoomInfo/>}/>        
+    
+
+
+          </Routes>             
         </View>
 
       
         <View style={styles.nav}>
           <Link style={styles.navButtons} to='/'><Text>DASHBOARD</Text></Link>
-          <Link style={styles.navButtons} to='/listings'><Text>LISTINGS</Text></Link>
-          <Link style={styles.navButtons} to='/profile'><Text>PROFILE</Text></Link>
+          <Link style={styles.navButtons} to='listings'><Text>LISTINGS</Text></Link>
+          <Link style={styles.navButtons} to='profile'><Text>PROFILE</Text></Link>
         </View>
       </View>      
     </NativeRouter>

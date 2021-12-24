@@ -1,50 +1,29 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ListingCard from './listingcard';
-import placeHolderImage from '../images/pexels-vecislavas-popa-1643383.jpg'
 import { ScrollView } from 'react-native-gesture-handler';
-import { NativeRouter, Routes, Route, Link } from 'react-router-native';
+import { NativeRouter, Routes, Route, Link, Outlet } from 'react-router-native';
+import { getRooms } from './databaseFunctions';
 
+export function ListingsPage(){
 
-function ListingsPage(){
+    allRooms = getRooms();
 
-    tempArray = [
-        {
-            id:1,
-            title: 'room listing uno',
-            image: placeHolderImage,
-            description: 'I have an extra room'
-        },
-        {
-            id:2,
-            title: 'another real room listing',
-            image: placeHolderImage,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
-        },
-        {
-            id:3,
-            title: 'super room with 2 bathrooms',
-            image: placeHolderImage,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        },
-        {
-            id: 4,
-            title: 'no rooms',
-            image: placeHolderImage,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
-        }
-    ]
 
     return (
         <ScrollView style={styles.listingsPage}>
             <Text>this is the listings page</Text>
             <Text>the following are the available listings</Text>
-                {tempArray.map(element => {
+                {allRooms.map(room => {
                     return(
-                        <ListingCard key={element.id} props={element}/>
+                        <Link to={`/listings/${room.id}`} key={room.id}>
+                        <ListingCard key={room.id} props={room}/>                        
+                        </Link>
+
                     )
-                })}        
-        </ScrollView>        
+                })}  
+            <Outlet/>
+        </ScrollView> 
     )
 
 }
@@ -57,6 +36,5 @@ const styles = StyleSheet.create({
         borderColor: 'steelblue',
     }
 })
-
 
 export default ListingsPage;
